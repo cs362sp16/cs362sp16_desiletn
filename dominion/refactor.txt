@@ -1,0 +1,3 @@
+I moved the first five (excluding gardens) case statement blocks into their own functions.
+This mostly just involved copying the blocks of code and putting them inside a function with the required parameters.
+Also ran a beautifier on the code to fix the indentation issues.
