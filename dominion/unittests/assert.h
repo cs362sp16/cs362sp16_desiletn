@@ -1,5 +1,3 @@
-int error = 0;
-
-void assertTrue(int result, char *msg);
+void myAssertTrue(int result, const char *msg);
 
 void checkAsserts();

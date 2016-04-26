@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include "assert.h"
 
-void assertEquals(int result, char *action){
+int myAssertError = 0;
+
+void myAssertTrue(int result, const char *msg){
     if(!result){
-        printf("ASSERT FAILED: %s\n", action);
-        error = 1;
+        printf("ASSERT FAILED: %s\n", msg);
+        myAssertError = 1;
     }
 }
 
 void checkAsserts(){
-    if(!error){
+    if(!myAssertError){
         printf("UNIT TEST PASSED.\n");
     }else{
         printf("UNIT TEST FAILED.\n");

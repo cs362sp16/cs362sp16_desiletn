@@ -15,7 +15,14 @@ interface.o: interface.h interface.c
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player
+assert.o: $(unittests/assert.h) $(unittests/assert.c)
+	gcc -c unittests/assert.c -g $(CFLAGS)
+
+unittests: $(unittests/unittest*.c) assert.o dominion.o
+	gcc -o unittest1 unittests/unittest1.c -g assert.o dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest2 unittests/unittest2.c -g assert.o dominion.o rngs.o $(CFLAGS)
+
+all: playdom player unittests
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
+	rm -f *.o playdom.exe playdom test.exe test player unittests/unittest1 unittests/unittest2 unittests/unittest3 unittests/unittest4 unittests/*.o cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM

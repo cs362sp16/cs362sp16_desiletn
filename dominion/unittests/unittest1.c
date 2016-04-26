@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
 
     // Init game and test
     int result = initializeGame(numPlayers, kingdomCards, seed, &game);
-    assertTrue((result == 0), "Game state initialization.");
+    myAssertTrue((result == 0), "Game state initialization.");
 
     checkAsserts();
 }

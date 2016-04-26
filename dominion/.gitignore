@@ -1,5 +1,11 @@
 *.gcda
 *.gcno
 *.o
+*.gch
+*.h.gch
 playdom
 player
+unittest1
+unittest2
+unittest3
+unittest4
