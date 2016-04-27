@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[]){
     // Game init variables
-    int numPlayers = 1;
+    int numPlayers = 2;
     int kingdomCards[] = {smithy,adventurer,gardens,embargo,cutpurse,mine,
                           ambassador,outpost,baron,tribute};
     int seed = 1234;

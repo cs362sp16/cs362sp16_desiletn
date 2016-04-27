@@ -1,7 +1,7 @@
 /******************************************************************************
  * Unit Test 3
- * Checks to see if playCard() works correctly
- * Primary tested function: playCard()
+ * Checks to see if player has correct copper, silver, gold cards at start
+ * Primary tested function: fullDeckCount()
  ******************************************************************************/
 #include <stdio.h>
 #include "assert.h"
@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[]){
     // Game init variables
-    int numPlayers = 1;
+    int numPlayers = 2;
     int kingdomCards[] = {smithy,adventurer,gardens,embargo,cutpurse,mine,
                           ambassador,outpost,baron,tribute};
     int seed = 1234;
@@ -17,11 +17,19 @@ int main(int argc, char *argv[]){
     struct gameState *game1 = &g1;
 
     // Init unshuffled and unshuffled game
-    initializeGame(numPlayers, kingdomCards, seed, &game1);
+    initializeGame(numPlayers, kingdomCards, seed, game1);
 
-    // Shuffle and check exit code
-    int result = playCard(2, -1, -1, -1, game1);
-    myAssertTrue((result == 0), "Playing a card.");
+    // Check copper cards
+    int result = fullDeckCount(1, copper, game1);
+    myAssertTrue((result == 7), "Seven copper cards.");
+
+    // Check silver cards
+    result = fullDeckCount(1, silver, game1);
+    myAssertTrue((result == 0), "Zero silver cards.");
+
+    // Check gold cards
+    result = fullDeckCount(1, gold, game1);
+    myAssertTrue((result == 0), "Zero gold cards.");
 
     checkAsserts();
 }

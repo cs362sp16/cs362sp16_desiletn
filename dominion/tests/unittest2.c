@@ -1,7 +1,7 @@
 /******************************************************************************
  * Unit Test 2
- * Checks to see if shuffle works correctly
- * Primary tested function: shuffle()
+ * Checks to see if player has 5 cards at start
+ * Primary tested function: numHandCards()
  ******************************************************************************/
 #include <stdio.h>
 #include "assert.h"
@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[]){
     // Game init variables
-    int numPlayers = 1;
+    int numPlayers = 2;
     int kingdomCards[] = {smithy,adventurer,gardens,embargo,cutpurse,mine,
                           ambassador,outpost,baron,tribute};
     int seed = 1234;
@@ -17,11 +17,11 @@ int main(int argc, char *argv[]){
     struct gameState *game1 = &g1;
 
     // Init unshuffled and unshuffled game
-    initializeGame(numPlayers, kingdomCards, seed, &game1);
+    initializeGame(numPlayers, kingdomCards, seed, game1);
 
-    // Shuffle and check exit code
-    int result = shuffle(0, &game1);
-    myAssertTrue((result == 0), "Decks are shuffled.");
+    // Check player hand at start
+    int result = numHandCards(game1);
+    myAssertTrue((result == 5), "Player has 5 cards at start.");
 
     checkAsserts();
 }
