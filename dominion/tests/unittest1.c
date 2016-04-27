@@ -13,11 +13,10 @@ int main(int argc, char *argv[]){
     int kingdomCards[] = {smithy,adventurer,gardens,embargo,cutpurse,mine,
                           ambassador,outpost,baron,tribute};
     int seed = 1234;
-    struct gameState g1;
-    struct gameState *game1 = &g1;
+    struct gameState game;
 
     // Init game and test
-    int result = initializeGame(numPlayers, kingdomCards, seed, game1);
+    int result = initializeGame(numPlayers, kingdomCards, seed, &game);
     myAssertTrue((result == 0), "Game state initialization.");
 
     checkAsserts();
