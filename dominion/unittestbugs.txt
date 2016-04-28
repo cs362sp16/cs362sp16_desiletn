@@ -1,1 +1,1 @@
-wat
+One major bug that I've found is that if you try to initialize the game with one player you will likely have issues with segmentation faults. The segmentation faults sometimes aren't immediate and may happen later on. There was even one case where I was able to prevent a segmentation fault by flushing stdout? The other bug I've found is that the smithy card doesn't seem to be adding three cards to the deck like it should, instead it only adds two.
