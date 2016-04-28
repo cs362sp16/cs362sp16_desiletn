@@ -1,0 +1,3 @@
+All of my unit and card tests have under 30% coverage so they're not really covering much of the code in dominion.c. This makes sense though because in these tests we are really only testing one small portion of the code rather than the entirety of the game. If for example we were testing a quick runthrough of a full game then test coverage should be close to all of the code.
+
+I found some odd behavior and some code that doesn't work quite right in dominion.c while I was creating the unit tests. The weirdest one was trying to initialize the game with only one player and getting a segmentation fault that could be prevented by flushing stdout before running certain game commands. 

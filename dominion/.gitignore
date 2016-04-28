@@ -3,6 +3,7 @@
 *.o
 *.gch
 *.h.gch
+*.gcov
 playdom
 player
 unittest1
@@ -13,3 +14,4 @@ cardtest1
 cardtest2
 cardtest3
 cardtest4
+unittestresults.out
