@@ -20,7 +20,7 @@ player: player.c interface.o
 assert.o: $(tests/assert.h) $(tests/assert.c)
 	gcc -c tests/assert.c -g $(CFLAGS)
 
-tests: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion.o
+unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion.o
 	gcc -o unittest1 tests/unittest1.c -g assert.o dominion.o rngs.o $(CFLAGS)
 	gcc -o unittest2 tests/unittest2.c -g assert.o dominion.o rngs.o $(CFLAGS)
 	gcc -o unittest3 tests/unittest3.c -g assert.o dominion.o rngs.o $(CFLAGS)
@@ -47,7 +47,7 @@ tests: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion.o
 	./cardtest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
-all: playdom player tests
+all: playdom player unittestresults.out
 
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player tests/unittest1 tests/unittest2 tests/unittest3 tests/unittest4 tests/*.o cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM unittesting.out
