@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
     seed = strtol(argv[1], NULL, 10);
     srand(time(&seed));
 
-    printf("Random testing card (10000x): Council room.\n");
+    printf("Random testing card (100000x): Council room.\n");
 
     // Run tests
     for(int i = 0; i < ITERATIONS; i++){

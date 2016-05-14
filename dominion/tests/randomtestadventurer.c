@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
     seed = strtol(argv[1], NULL, 10);
     srand(time(&seed));
 
-    printf("Random testing card (10000x): Adventurer.\n");
+    printf("Random testing card (100000x): Adventurer.\n");
 
     // Run tests
     for(int i = 0; i < ITERATIONS; i++){
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]){
         // Play adventurer card
         result = cardEffect(adventurer, NULL, NULL, NULL, &state, 0, NULL);
 
-        // Check affected values against saved ones
+        // Check result
         myAssertTrue((result == 0), "Card effect function.");
     }
 
