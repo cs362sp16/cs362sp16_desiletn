@@ -8,7 +8,7 @@
 #include "assert.h"
 #include "../dominion.h"
 
-#define ITERATIONS 10000
+#define ITERATIONS 100000
 
 int main(int argc, char *argv[]){
     struct gameState state;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
 
     // Run tests
     for(int i = 0; i < ITERATIONS; i++){
-        int players = rand() % MAX_PLAYERS;
+        int players = 2 + rand() % (MAX_PLAYERS - 2);
         int randNum = rand();
         int currPlayer = 0;
         int savedHandCount = NULL;
@@ -51,14 +51,14 @@ int main(int argc, char *argv[]){
 
         // Setup state
         state.deckCount[currPlayer] = rand() % MAX_DECK;
-        state.discardCount[currPlayer] = rand() %  MAX_DECK;
-        state.handCount[currPlayer] = rand() %  MAX_HAND;
+        state.discardCount[currPlayer] = rand() % MAX_DECK;
+        state.handCount[currPlayer] = rand() % MAX_HAND;
 
         // Save values to be affected by smithy
         savedHandCount = state.handCount[currPlayer];
 
         // Play council room card
-        cardEffect(council_room, NULL, NULL, NULL, &state, 0, NULL);
+        cardEffect(smithy, NULL, NULL, NULL, &state, 0, NULL);
 
         // Check affected values against saved ones
         myAssertTrue((result == 0), "Card effect function.");
