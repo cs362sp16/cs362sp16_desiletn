@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CFLAGS = -std=c99 -Wall -fpic -coverage -lm
+ANSWER_TO_LIFE = 42
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -29,7 +30,12 @@ unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion
 	gcc -o cardtest2 tests/cardtest2.c -g assert.o dominion.o rngs.o $(CFLAGS)
 	gcc -o cardtest3 tests/cardtest3.c -g assert.o dominion.o rngs.o $(CFLAGS)
 	gcc -o cardtest4 tests/cardtest4.c -g assert.o dominion.o rngs.o $(CFLAGS)
+	gcc -o randomtestcard1 tests/randomtestcard1.c -g assert.o dominion.o rngs.o $(CFLAGS)
+	gcc -o randomtestcard2 tests/randomtestcard2.c -g assert.o dominion.o rngs.o $(CFLAGS)
+	gcc -o randomtestadventurer tests/randomtestadventurer.c -g assert.o dominion.o rngs.o $(CFLAGS)
+
 	rm -f unittestresults.out
+
 	./unittest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	./unittest2 >> unittestresults.out
@@ -45,6 +51,13 @@ unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion
 	./cardtest3 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	./cardtest4 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
+	./randomtestcard1 $(ANSWER_TO_LIFE) >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./randomtestcard2 $(ANSWER_TO_LIFE) >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	./randomtestadventurer $(ANSWER_TO_LIFE) >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
 all: playdom player unittestresults.out
