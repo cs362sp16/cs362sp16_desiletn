@@ -35,6 +35,9 @@ unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion
 	gcc -o randomtestadventurer tests/randomtestadventurer.c -g assert.o dominion.o rngs.o $(CFLAGS)
 
 	rm -f unittestresults.out
+	rm -f randomtestcard1.out
+	rm -f randomtestcard2.out
+	rm -f randomtestadventurer.out
 
 	./unittest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
@@ -53,12 +56,12 @@ unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion
 	./cardtest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
-	./randomtestcard1 $(ANSWER_TO_LIFE) >> unittestresults.out
-	gcov dominion.c >> unittestresults.out
-	./randomtestcard2 $(ANSWER_TO_LIFE) >> unittestresults.out
-	gcov dominion.c >> unittestresults.out
-	./randomtestadventurer $(ANSWER_TO_LIFE) >> unittestresults.out
-	gcov dominion.c >> unittestresults.out
+	./randomtestcard1 $(ANSWER_TO_LIFE) >> randomtestcard1.out
+	gcov dominion.c >> randomtestcard1.out
+	./randomtestcard2 $(ANSWER_TO_LIFE) >> randomtestcard2.out
+	gcov dominion.c >> randomtestcard2.out
+	./randomtestadventurer $(ANSWER_TO_LIFE) >> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
 
 all: playdom player unittestresults.out
 
