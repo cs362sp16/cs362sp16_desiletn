@@ -1,9 +1,0 @@
-Random testing card (100000x): Smithy.
-ASSERT FAILED: Post hand count.
-ASSERT FAILED: Post hand count.
-ASSERT FAILED: Post hand count.
-UNIT TEST FAILED.
-File 'dominion.c'
-Lines executed:30.96% of 562
-Creating 'dominion.c.gcov'
-
