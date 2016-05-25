@@ -7,7 +7,7 @@
 #include <time.h>
 #include "../dominion.h"
 
-#define ITERATIONS 10
+#define ITERATIONS 100
 #define K_MIN adventurer
 #define K_MAX treasure_map
 
@@ -144,10 +144,11 @@ void playRound(struct gameState *state){
                         playCard(handPos, 0, -1, -1, state);
                         break;
                     case embargo:
-                        playCard(handPos, (rand() % (1 - 26) + 26), -1, -1, state);
+                        playCard(handPos, 0, -1, -1, state);
                         break;
                     case feast:
-                        //playCard(handPos, (rand() % (duchy + 1 - 26) + 26), -1, -1, state);
+                        // Always gets stuck
+                        //playCard(handPos, 0, -1, -1, state);
                         break;
                     case minion:
                         playCard(handPos, 1, -1, -1, state);
@@ -223,7 +224,7 @@ int main(int argc, char *argv[]){
         }
     }
 
-    //printf("\n");
+    printf("\n");
 
     return 0;
 }

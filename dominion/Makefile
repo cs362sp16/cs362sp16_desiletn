@@ -63,10 +63,11 @@ unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion
 	./randomtestadventurer $(ANSWER_TO_LIFE) >> randomtestadventurer.out
 	gcov dominion.c >> randomtestadventurer.out
 
-testdominion: $(tests/testdominion.c) dominion.o
+testdominion.out: $(tests/testdominion.c) dominion.o
 	gcc -o testdominion tests/testdominion.c -g dominion.o rngs.o $(CFLAGS)
-
-test: playdom player testdominion
+	rm -f testdominion.out
+	./testdominion $(ANSWER_TO_LIFE) >> testdominion.out
+	gcov dominion.c >> testdominion.out
 
 all: playdom player testdominion unittestresults.out
 

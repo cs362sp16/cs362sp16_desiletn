@@ -1,0 +1,28 @@
+#!/bin/bash
+
+start_dir=`pwd`
+path1="$1"
+path2="$2"
+seed="$3"
+
+cd $path1
+make clean
+make testdominion.out
+./testdominion $seed >> tmp_one.out
+gcov dominion.c >> tmp_one.out
+
+cd $path2
+make clean
+make testdominion.out
+./testdominion $seed >> tmp_two.out
+gcov dominion.c >> tmp_two.out
+
+diff -s -y $path1/tmp_one.out $path2/tmp_two.out >> diff
+result=`tail -n 1 diff`
+if [[ $result =~ .*identical.* ]];
+then
+    echo "TEST PASSED"
+else
+    cat diff
+    echo "TEST FAILED"
+fi
