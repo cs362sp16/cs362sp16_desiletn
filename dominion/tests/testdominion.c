@@ -7,7 +7,7 @@
 #include <time.h>
 #include "../dominion.h"
 
-#define ITERATIONS 100
+#define ITERATIONS 20
 #define K_MIN adventurer
 #define K_MAX treasure_map
 
