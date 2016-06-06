@@ -13,7 +13,7 @@ void card_adventurer(struct gameState *state, int currentPlayer){
     int cardDrawn = 0;
     int drawnTreasure = 0;
     int tempHand[MAX_HAND];
-    int z = 0; // for temp hand...
+ /* MUTANT (rep_const) */    int z = 1; // for temp hand...
 
     while(drawnTreasure < 2){
         // If the deck is empty we need to shuffle discard & add to deck
@@ -1349,6 +1349,3 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
     return 0;
 }
-
-
-//end of dominion.c

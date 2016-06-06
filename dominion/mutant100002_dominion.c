@@ -10,7 +10,7 @@
  ******************************************************************************/
 
 void card_adventurer(struct gameState *state, int currentPlayer){
-    int cardDrawn = 0;
+ /* MUTANT (rep_const) */    int cardDrawn = -1;
     int drawnTreasure = 0;
     int tempHand[MAX_HAND];
     int z = 0; // for temp hand...
@@ -1349,6 +1349,3 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
     return 0;
 }
-
-
-//end of dominion.c

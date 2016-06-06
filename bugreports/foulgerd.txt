@@ -1,0 +1,13 @@
+smithy card: (diff from original)
+    for loop i < 1
+    should be i < 3
+
+village card: (diff from original)
+    state->numActions + 3
+    should be state->numActions + 2;
+
+council room: (unit test failure)
+    post hand count failed
+    saved hand count was not incremented by 3
+
+TODO ...
