@@ -20,3 +20,4 @@ randomtestcard2
 testdominion
 diff
 *.out
+mutant*_dominion.c
