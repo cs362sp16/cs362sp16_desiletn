@@ -1,13 +1,18 @@
+Bug #1
 smithy card: (diff from original)
     for loop i < 1
     should be i < 3
 
+Bug #2
 village card: (diff from original)
     state->numActions + 3
     should be state->numActions + 2;
 
+Bug #3
 council room: (unit test failure)
     post hand count failed
     saved hand count was not incremented by 3
 
-TODO ...
+The first two bugs were found from just diffing this modified version of dominion.c to the original dominion.c in the class repository. The first two bugs won't necessarily crash the game but it introduces incorrect game logic so that the game rules are not exactly correct. For the smithy card, the modified version will only draw one card where in a correct implementation the smithy card should be drawing three cards. Likewise with the village card, a correct implementation would increase the number of actions by two instead of the modified version increasing the number of actions by three.
+
+Aside from diffing the files, a set of unit tests that tests these cards specifically for their correct behavior should be able to catch these errors as well. The last bug was found from a failing unit test where there was a case where playing the council room card did not draw exactly three cards. Also, as mentioned in one of my previous text files in this assignment, it is possible that the failed test case was actually correct behavior.
