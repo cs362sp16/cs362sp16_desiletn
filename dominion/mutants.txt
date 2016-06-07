@@ -1,0 +1,31 @@
+The mutation tool that I used was the one linked in the classroom repository (cmutate). I then ran the generate mutatations script and it produced about ~2500 mutations of dominion.c for me. I then wrote a script that would run the makefile on every mutation produced by the shell script and also run my series of unit tests on each mutation. It was only able to get through about 40 of the mutations since on the 40th one it hit an infinite loop condition.
+
+Code snippet from the 40th mutation:
+
+while(drawnTreasure < 2){
+    // If the deck is empty we need to shuffle discard & add to deck
+    if(state->deckCount[currentPlayer] < 1){
+        //printf("Shuffle deck\n");
+        shuffle(currentPlayer, state);
+    }
+
+    //printf("Draw card\n");
+    drawCard(currentPlayer, state);
+
+    //printf("Set card drawn\n");
+    // Top card of hand is most recently drawn card
+    cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
+
+    if(cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
+/* MUTANT (del_stmt) */ /*             drawnTreasure++; */
+    }else{
+        //printf("else\n");
+        tempHand[z] = cardDrawn;
+        state->handCount[currentPlayer]--; // rm most recent (top) card
+        z++;
+    }
+}
+
+In this particular case, the removed drawnTreasure++ statement causes the while(drawnTreasure < 2) condition to always evaluate to true thus resulting in an infinite loop. The previous unit tests with the mutated source files did not seem to cause any other interesting behavior/errors. I think a large part of this is my testing suite only tests for some specific functionality of certain cards and so it is likely not catching some super specific nuances of dominion. The mutations didn't seem to affect code coverage much which varied around 1-2% at most (which is about what it was without mutants). I did notice a few spots where my test cases didn't write their usual output indicating if a test passed or failed. I am assuming those were instances in which the program had crashed.
+
+It wouldn't have been feasible for me to run the remaining tests as I would have to continually monitor my terminal to find out if there is an infinite loop or not (indicated by taking an excessively long time to run (say 5+ minutes, which is definitely way too long)). Additionally each of the unit tests runs about 100,000 iterations and so running the suite of tests on a particular mutation takes about 5-10 seconds or so to complete. Monitoring and checking all 2500 tests would take quite a while. Instead, the best solution would be to modify the existing unit tests to produce more quantifiable output and check for infinite loop conditions (using timers or something) and then rerun the mutation tests.

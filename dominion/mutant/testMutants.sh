@@ -11,7 +11,7 @@ do
 	target_dom="mutant${i}_dominion.c"
 	cp $target_dom "${target_dom}.tmp"
 	mv $target_dom dominion.c
-	make -f Makefile unittestresults.out
+	make -f Makefile testdominion.out
 	mv "${target_dom}.tmp" $target_dom
 	make -f Makefile clean
 done

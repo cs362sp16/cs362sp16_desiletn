@@ -65,7 +65,7 @@ unittestresults.out: $(tests/unittest*.c) $(tests/cardtest*.c) assert.o dominion
 
 testdominion.out: $(tests/testdominion.c) dominion.o
 	gcc -o testdominion tests/testdominion.c -g dominion.o rngs.o $(CFLAGS)
-	rm -f testdominion.out
+	#rm -f testdominion.out
 	./testdominion $(ANSWER_TO_LIFE) >> testdominion.out
 	gcov dominion.c >> testdominion.out
 
